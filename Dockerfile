@@ -13,7 +13,7 @@ RUN locale-gen en_US.UTF-8 && \
         software-properties-common && \
         build-essential \
         tar \
-        wget \
+        wget
 
 RUN mkdir -p /tmp/cuda && \
     wget http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda_7.5.18_linux.run
