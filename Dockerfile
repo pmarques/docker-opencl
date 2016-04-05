@@ -23,7 +23,8 @@ RUN mkdir -p /tmp/cuda && \
     ./cuda_7.5.18_linux.run --silent  --extract=/tmp/cuda && \
     chmod 700 *
 
-RUN ./NVIDIA-Linux-x86_64-352.39.run -s --no-kernel-module && \
+RUN cd /tmp/cuda && \
+    ./NVIDIA-Linux-x86_64-352.39.run -s --no-kernel-module && \
     ./cuda-linux64-rel-7.5.18-19867135.run  -noprompt -prefix=/tmp/cuda
 
 
