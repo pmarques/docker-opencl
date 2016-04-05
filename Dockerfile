@@ -16,7 +16,12 @@ RUN locale-gen en_US.UTF-8 && \
         wget
 
 RUN mkdir -p /tmp/cuda && \
-    wget http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda_7.5.18_linux.run
+    cd /tmp/cuda && \
+    wget http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda_7.5.18_linux.run && \
+    chmod 700 * && \
+    ./cuda_7.5.18_linux.run --silent  --extract=/tmp/cuda && \
+    chmod 700 *
+
 
 
 #RUN /tmp/opencl/NVIDIA-Linux-x86_64-352.39.run -s --no-kernel-module
