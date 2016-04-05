@@ -25,7 +25,11 @@ RUN mkdir -p /tmp/cuda && \
 
 RUN cd /tmp/cuda && \
     ./NVIDIA-Linux-x86_64-352.39.run -s --no-kernel-module && \
-    ./cuda-linux64-rel-7.5.18-19867135.run  -noprompt -prefix=/tmp/cuda
+    ./cuda-linux64-rel-7.5.18-19867135.run  -noprompt -prefix=/tmp/cuda && \
+    cp -prv lib64/libOpenCL.so /usr/lib/ && \
+    cp -prv include/CL /usr/include/ && \
+    echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd && \
+    rm -rf /tmp/cuda
 
 
 
