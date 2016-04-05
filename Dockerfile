@@ -9,7 +9,7 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu/ trusty multiverse" >> /etc/apt/s
     echo "deb http://security.ubuntu.com/ubuntu trusty-security multiverse" >> /etc/apt/sources.list
 
 RUN locale-gen en_US.UTF-8 && \
-    apt-get install -y --no-install-recommends \
+    apt-get install -y \
         build-essential \
         software-properties-common \
         tar \
