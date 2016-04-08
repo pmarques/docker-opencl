@@ -15,15 +15,19 @@ RUN locale-gen en_US.UTF-8 && \
         software-properties-common \
         wget
 
-RUN mkdir -p /tmp/cuda && \
-    cd /tmp/cuda && \
+RUN mkdir -p /tmp/opencl && \
+    cd /tmp/opencl && \
     wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/nvidia-libopencl1-352_352.79-0ubuntu1_amd64.deb && \
     wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/nvidia-opencl-icd-352_352.79-0ubuntu1_amd64.deb && \
+    wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/nvidia-352_352.79-0ubuntu1_amd64.deb && \
+    wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/nvidia-352-dev_352.79-0ubuntu1_amd64.deb && \
     dpkg -i nvidia-libopencl1-352_352.79-0ubuntu1_amd64.deb && \
     dpkg -i nvidia-opencl-icd-352_352.79-0ubuntu1_amd64.deb && \
+    dpkg --unpack nvidia-352_352.79-0ubuntu1_amd64.deb && \
+    dpkg --unpack nvidia-352-dev_352.79-0ubuntu1_amd64.deb && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    rm -rf /tmp/cuda
+    rm -rf /tmp/opencl
 
 
 
