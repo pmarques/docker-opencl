@@ -10,25 +10,19 @@ MAINTAINER Mario David <mariojmdavid@gmail.com>
 
 RUN locale-gen en_US.UTF-8 && \
     apt-get update && \
-    apt-get install -y \
+    apt-get install -y --no-install-recommends \
         build-essential \
         software-properties-common \
-        tar \
         wget
 
 RUN mkdir -p /tmp/cuda && \
     cd /tmp/cuda && \
-    wget http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda_7.5.18_linux.run && \
-    chmod 700 * && \
-    ./cuda_7.5.18_linux.run --silent  --extract=/tmp/cuda && \
-    chmod 700 *
-
-RUN cd /tmp/cuda && \
-    ./NVIDIA-Linux-x86_64-352.39.run -s --no-kernel-module && \
-    ./cuda-linux64-rel-7.5.18-19867135.run  -noprompt -prefix=/tmp/cuda && \
-    cp -prv lib64/libOpenCL.so /usr/lib/ && \
-    cp -prv include/CL /usr/include/ && \
-    echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd && \
+    wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/nvidia-libopencl1-352_352.79-0ubuntu1_amd64.deb && \
+    wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/nvidia-opencl-icd-352_352.79-0ubuntu1_amd64.deb && \
+    dpkg -i nvidia-libopencl1-352_352.79-0ubuntu1_amd64.deb && \
+    dpkg -i nvidia-opencl-icd-352_352.79-0ubuntu1_amd64.deb && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/cuda
 
 
