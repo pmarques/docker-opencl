@@ -37,3 +37,19 @@ RUN apt-get install -y --no-install-recommends \
         libfftw3-long3 \
         libfftw3-single3
 
+RUN pip install --upgrade pip
+RUN pip install mako
+RUN pip install numpy
+RUN pip install	pyfftw
+RUN pip install	pyopencl==2015.1
+
+RUN mkdir -p /tmp/pymods && \
+    cd /tmp/pymods && \
+    git clone https://github.com/clMathLibraries/clFFT.git && \
+    cd /tmp/pymods/clFFT/src && \
+    cmake CMakeLists.txt && make install
+
+RUN cd /tmp/pymods && \
+    git clone https://github.com/geggo/gpyfft.git && \
+    cd gpyfft && \
+    python setup.py install
