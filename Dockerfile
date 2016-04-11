@@ -30,9 +30,10 @@ COPY $nvidiadrv /tmp/setup/$nvidiadrv
 RUN /tmp/setup/$nvidiadrv -s --no-kernel-module && \
     rm -rf /tmp/setup
 
-#RUN cp -prv /tmp/opencl/include/CL /usr/include/
-#RUN cp -prv /tmp/opencl/lib64/* /usr/lib/
-#RUN mkdir -p /etc/OpenCL/vendors/ && \
-#    echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
-#RUN rm -rf /tmp/opencl
+RUN apt-get install -y --no-install-recommends \
+        libffi-dev \
+        libfftw3-dev \
+        libfftw3-double3 \
+        libfftw3-long3 \
+        libfftw3-single3
 
