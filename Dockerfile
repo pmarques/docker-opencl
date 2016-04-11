@@ -35,9 +35,8 @@ RUN cd /tmp/setup && \
     ./$NVIDIA_DRV -s --no-kernel-module && \
     cd /usr/include && \
     wget http://www.lip.pt/~david/cl_include.tgz && \
-    tar zxvf cl_include.tgz
-
-RUN apt-get install -y --no-install-recommends \
+    tar zxvf cl_include.tgz && \
+    apt-get install -y --no-install-recommends \
         libffi-dev \
         libfftw3-dev \
         libfftw3-double3 \
@@ -47,9 +46,8 @@ RUN apt-get install -y --no-install-recommends \
     pip install mako && \
     pip install numpy && \
     pip install	pyfftw && \
-    pip install	pyopencl==2015.1
-
-RUN cd /tmp/setup && \
+    pip install	pyopencl==2015.1 && \
+    cd /tmp/setup && \
     git clone https://github.com/clMathLibraries/clFFT.git && \
     git clone https://github.com/geggo/gpyfft.git && \
     cd /tmp/setup/clFFT/src && \
