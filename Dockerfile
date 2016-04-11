@@ -12,7 +12,7 @@ RUN locale-gen en_US.UTF-8 && \
         cython \
         git \
         python-dev \
-        python-pip
+        python-pip \
         software-properties-common \
         tar \
         wget
