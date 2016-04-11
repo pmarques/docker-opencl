@@ -1,4 +1,4 @@
-# docker build -t nvidia_pyopencl .
+# docker build -t pyopencl .
 
 FROM ubuntu:14.04
 

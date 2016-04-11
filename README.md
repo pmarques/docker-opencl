@@ -19,7 +19,7 @@ the following line:
 
 ## Install
 
-* docker build -t nvidia_pyopencl .
+* docker build -t pyopencl .
 
 ## Run
 
@@ -31,7 +31,7 @@ docker run \
     --device=/dev/nvidia0:/dev/nvidia0 \
     --device=/dev/nvidiactl:/dev/nvidiactl \
     --device=/dev/nvidia-uvm:/dev/nvidia-uvm \
-    nvidia_pyopencl
+    pyopencl
 ```
 
 
